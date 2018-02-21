@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background: rgb(216, 216, 216);
+      }
+      h1, h3 {
+        color: #1a1a1a;
+        width: 100%;
+        text-align: center;
+      }
+      h3 {
+        font-weight: normal;
+        color: #00FF7F;
+      }
+      a {
+        display: block;
+        width: 11em;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        margin: 0 auto 0 auto;
+        color: #F5F5F5;
+        border-radius: 5px;
+        background: #6495ED;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>欢迎入住 Fragment.top!</h1>
+    <h3>我们欣赏您的事务。</h3>
+    <a target="_blank" href="http://fragment.top/static/doc/welcome.html?token=<%= $token %>">
+      请点击以完成注册
+    </a>
+  </body>
+</html>
