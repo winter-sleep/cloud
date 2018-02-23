@@ -60,7 +60,7 @@ sub matchPassword {
     'SELECT
       `id`, `nickname`, `email`, `gender`, `master`, `active`
     FROM
-      `users` WHERE `email` = ? AND `password` = ?'
+      `users` WHERE `email` = ? AND `password` = ? AND `active` = 1'
   );
   my $passwordHash = $self->makePasswordHash($password);
   $sth->execute($email, $passwordHash);
@@ -89,6 +89,19 @@ sub activeNomal {
   );
   $db->disconnect();
   return $result eq "0E0" ? 0 : 1;
+}
+
+sub isActived {
+  my ($self, $email) = @_;
+  my $db = $self->getDbi();
+  my $sth = $db->prepare(
+    "SELECT 1 AS number FROM `users` WHERE `email` = ? AND `active` = 1"
+  );
+  $sth->execute($email);
+  my $result = ($sth->rows > 0) ? 1 : 0;
+  $sth->finish();
+  $db->disconnect();
+  return $result;
 }
 
 1;

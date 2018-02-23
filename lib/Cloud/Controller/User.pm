@@ -101,6 +101,11 @@ sub signin {
       mess => 'email 尚未注册~'
     }, status => $invCode);
   }
+  if (!$usersModel->isActived($email)) {
+    return $self->render(json => {
+      mess => '您的账户尚未激活，请前往邮箱查收激活邮件~'
+    }, status => 403);
+  }
   my $result = $usersModel->matchPassword($email, $password);
   if (!$result) {
     return $self->render(json => {
