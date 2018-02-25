@@ -103,7 +103,7 @@ sub signin {
   }
   if (!$usersModel->isActived($email)) {
     return $self->render(json => {
-      mess => '您的账户尚未激活，请前往邮箱查收激活邮件~'
+      mess => '账户尚未激活，请前往邮箱查收激活邮件，点击确认后可以重新发送激活邮件～'
     }, status => 403);
   }
   my $result = $usersModel->matchPassword($email, $password);
